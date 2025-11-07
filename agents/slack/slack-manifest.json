@@ -1,0 +1,35 @@
+{
+  "display_information": {
+    "name": "<app-name>",
+    "description": "<app-description>",
+    "background_color": "#282922"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "<bot-name>",
+      "always_online": true
+    }
+  },
+  "oauth_config": {
+    "redirect_urls": ["<redirect-url>"],
+    "scopes": {
+      "bot": [
+        "app_mentions:read",
+        "channels:history",
+        "chat:write",
+        "im:write",
+        "im:history",
+        "<any-other-scopes>"
+      ]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "request_url": "<your-app-url>/slack",
+      "bot_events": ["app_mention", "message.im", "<events-your-bot-receives>"]
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": false,
+    "token_rotation_enabled": false
+  }
+}

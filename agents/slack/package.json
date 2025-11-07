@@ -1,0 +1,19 @@
+{
+  "name": "@cloudflare/agents-slack-example",
+  "type": "module",
+  "private": true,
+  "author": "Steve James <sjames@cloudflare.com>",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "types": "wrangler types --include-runtime false"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "wrangler": "^4.45.2"
+  },
+  "dependencies": {
+    "agents": "^0.2.19",
+    "openai": "^6.7.0"
+  }
+}
