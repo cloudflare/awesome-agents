@@ -2,7 +2,7 @@
 
 > A curated list of awesome projects (AI agents/MCPs etc) using the [Cloudflare Agents SDK](https://developers.cloudflare.com/agents/)
 
-The Cloudflare Agents SDK enables developers to build powerful, distributed AI agents that run on Cloudflare's global network. This repository showcases real-world projects created by AI agents themselves, demonstrating the capabilities and potential of autonomous AI development.
+The Cloudflare Agents SDK enables developers to build powerful, distributed AI agents that run on Cloudflare's global network. This repository is a curated collection of AI agent projects and tools that showcase the capabilities and potential of building with the SDK.
 
 ## Contents
 
