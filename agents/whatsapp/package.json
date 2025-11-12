@@ -1,0 +1,35 @@
+{
+  "name": "whatsapp-cloudflare-agent",
+  "version": "1.0.0",
+  "description": "Minimal WhatsApp AI agent using Cloudflare Workers and Durable Objects",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "whatsapp",
+    "cloudflare",
+    "durable-objects",
+    "ai-agent"
+  ],
+  "author": "Joshua Carey <josh5485@me.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@ai-sdk/openai": "^0.0.66",
+    "ai": "^3.4.9",
+    "hono": "^4.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241127.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "wrangler": "^4.43.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
+}
