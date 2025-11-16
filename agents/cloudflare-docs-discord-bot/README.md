@@ -31,7 +31,7 @@ A slightly vibe-coded example Discord bot that answers questions about Cloudflar
 npm install
 ```
 
-### 2. Set Up Discord Application
+### 2. Set Up the Discord App
 
 1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
 2. Click "New Application" and give it a name
@@ -56,7 +56,7 @@ npx wrangler secret put DISCORD_PUBLIC_KEY
 npx wrangler secret put DISCORD_BOT_TOKEN
 ```
 
-### 4. Deploy to Cloudflare
+### 4. Deploy
 
 ```bash
 npm run deploy
@@ -64,7 +64,7 @@ npm run deploy
 
 Grab your Worker URL (e.g., `https://cloudflare-docs-discord-bot.your-subdomain.workers.dev`)
 
-### 5. Register Discord Commands
+### 5. Register the Discord Commands
 
 Call the setup endpoint to register the bot's commands:
 
@@ -74,14 +74,14 @@ curl -X POST https://your-worker-url.workers.dev/setup
 
 You should see: `{"success":true,"message":"Discord commands registered successfully"}`
 
-### 6. Configure Discord Webhook
+### 6. Configure the Discord Webhook
 
 1. Go back to your Discord Application in the Developer Portal
 2. Navigate to "General Information"
 3. Under "Interactions Endpoint URL", enter: `https://your-worker-url.workers.dev/discord`
 4. Discord will verify the URL (this may take a moment)
 
-### 7. Invite Bot to Your Server
+### 7. Invite the Bot to Your Server
 
 1. In the Discord Developer Portal, go to "OAuth2" → "URL Generator"
 2. Select scopes: **this is important, don't skip this**
@@ -175,14 +175,6 @@ this.env.AI.run('@cf/qwen/qwen2.5-coder-32b-instruct' as any, {
 ```
 
 Available models: [Workers AI Models](https://developers.cloudflare.com/workers-ai/models/)
-
-### Adjust Context Window
-
-Modify `buildConversationContext` in `src/agent.ts` (~line 250):
-
-```typescript
-const maxMessages = 10; // Increase for more context (default: 10)
-```
 
 ### Custom System Prompt
 
