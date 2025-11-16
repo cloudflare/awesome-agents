@@ -186,22 +186,14 @@ const maxMessages = 10; // Increase for more context (default: 10)
 
 ### Custom System Prompt
 
-Edit `systemPrompt` in `src/agent.ts` (~line 165) to change behavior.
-
-## Cost Estimation
-
-This bot mainly runs on Cloudflare's free tier:
-
-- **Workers**: 100,000 requests/day (free tier)
-- **Durable Objects**: 1M requests/month + storage (paid tier required)
-- **Workers AI**: Pay-as-you-go ($0.01 per 1000 neurons - approximately $0.10 per 1000 requests)
+Edit `systemPrompt` in `src/agent.ts` (~line 165) to change how the agent responds.
 
 ## Learn More
 
-- [Cloudflare Agents SDK](https://github.com/cloudflare/agents) - Official SDK repository
-- [Agents API Reference](https://developers.cloudflare.com/agents/api-reference/agents-api/) - Complete API documentation
-- [Using AI Models with Agents](https://developers.cloudflare.com/agents/api-reference/using-ai-models/) - Workers AI and OpenAI integration guide
-- [Cloudflare MCP Server](https://github.com/cloudflare/mcp-server-cloudflare) - Documentation search server
+- [Cloudflare Agents SDK](https://github.com/cloudflare/agents) 
+- [Agents API Reference](https://developers.cloudflare.com/agents/api-reference/agents-api/)
+- [Using AI Models with Agents](https://developers.cloudflare.com/agents/api-reference/using-ai-models/)
+- [Cloudflare MCP Server](https://github.com/cloudflare/mcp-server-cloudflare)
 - [Workers AI Documentation](https://developers.cloudflare.com/workers-ai/)
 - [Durable Objects Documentation](https://developers.cloudflare.com/durable-objects/)
 - [Discord Bot Documentation](https://discord.com/developers/docs)
