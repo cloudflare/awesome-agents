@@ -1,0 +1,30 @@
+{
+  "name": "cloudflare-docs-discord-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot that answers Cloudflare questions using the Agents SDK and MCP documentation server",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest",
+    "cf-typegen": "wrangler types"
+  },
+  "keywords": [],
+  "author": "Marc Selwan (mselwan@cloudflare.com)",
+  "license": "MIT",
+  "dependencies": {
+    "agents": "^0.2.26",
+    "discord-interactions": "^4.1.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241127.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "wrangler": "^4.47.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

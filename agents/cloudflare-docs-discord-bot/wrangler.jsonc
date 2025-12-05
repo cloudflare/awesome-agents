@@ -1,0 +1,31 @@
+{
+  "name": "cloudflare-docs-discord-bot",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-08-07",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "ai": {
+    "binding": "AI"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "CLOUDFLARE_DOCS_AGENT",
+        "class_name": "CloudflareDocsAgent"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["CloudflareDocsAgent"]
+    }
+  ],
+  // Set secrets via: 
+  // npx wrangler secret put DISCORD_APPLICATION_ID
+  // npx wrangler secret put DISCORD_PUBLIC_KEY
+  // npx wrangler secret put DISCORD_BOT_TOKEN
+  "vars": {
+    "MCP_SERVER_URL": "https://docs.mcp.cloudflare.com/mcp"
+  }
+}
