@@ -108,6 +108,10 @@ If the user requests current information, web sources, news, or citations, call 
 | `includeImages` | boolean | `false` | Whether to include images. |
 
 ## Example response
-Once configured, prompt your agent with a query like "What are the latest Cloudflare Workers AI updates?". The agent will call `linkupWebSearch` and return a sourced answer with citations.
+Once configured, prompt your agent with a query like "What's the current INR to POUND exchange rate?". The agent will call `linkupWebSearch` and return a sourced answer with citations. For queries that do not need a web search, the agent will skip calling the tool.
+
+
+https://github.com/user-attachments/assets/39ea2ddc-015c-427c-9130-84fcc26aae76
+
 
 You are now ready to use Linkup as a web search tool in Cloudflare Agents!
