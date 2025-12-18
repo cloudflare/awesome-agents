@@ -1,6 +1,8 @@
 # Linkup Web Search Tool for Cloudflare Agents
 
-Use Linkup as a real-time web search tool inside Cloudflare Agents. This guide shows how to add the Linkup tool definition, wire it into your agent's system prompt, and configure the required secrets.
+AI applications and agents need access to realtime information from the internet. Linkup is a web search engine for AI apps that provides grounding data to enrich your AI’s output and increase its precision, accuracy and factuality.
+
+Use [Linkup](https://www.linkup.so/) as a real-time web search tool inside Cloudflare Agents. This guide shows how to add the Linkup tool definition, wire it into your agent's system prompt, and configure the required secrets.
 
 ## What it does
 - Adds a `linkupWebSearch` tool that performs web searches (standard or deep) via the Linkup API
@@ -10,7 +12,7 @@ Use Linkup as a real-time web search tool inside Cloudflare Agents. This guide s
 ## Prerequisites
 - Cloudflare account and Wrangler CLI
 - Node.js 18+
-- Linkup account with an API key (free tier works)
+- [Linkup account](https://app.linkup.so/sign-up) with an API key (free tier works)
 - OpenAI-compatible model key (for your agent) if not already configured
 
 ## 1) Create or open a Cloudflare Agents project
