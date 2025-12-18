@@ -17,6 +17,7 @@ The Cloudflare Agents SDK enables developers to build powerful, distributed AI a
 
 - **[Slack Agent](./agents/slack)** - An AI agent for Slack integration and automation
 - **[Cloudflare Discord Agent](./agents/cloudflare-docs-discord-bot)** - A Discord agent that answers questions about Cloudflare using RAG with [Cloudflare Docs MCP](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-vectorize).
+- **[Linkup Web Search Tool](./agents/linkup-web-search)** - Adds a Linkup-powered web search tool to Cloudflare Agents for real-time, sourced answers.
 
 ## Getting Started
 
@@ -68,4 +69,3 @@ Projects should:
 ## License
 
 This repository is licensed under the MIT License - see individual project directories for specific project licenses.
-
