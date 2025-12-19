@@ -1,0 +1,11 @@
+# Discord bot token (required)
+DISCORD_BOT_TOKEN=
+
+# LLM Provider (set ONE of these)
+ANTHROPIC_API_KEY=
+OPENAI_API_KEY=
+OPENROUTER_API_KEY=
+OPENCODE_API_KEY=
+
+# Optional: override the default model for your provider
+# MODEL=

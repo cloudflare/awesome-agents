@@ -1,7 +1,14 @@
 {
   "name": "discord-agent",
   "main": "src/index.ts",
-  "compatibility_date": "2025-03-14",
+  "compatibility_date": "2025-12-19",
+  "rules": [
+    {
+      "type": "Text",
+      "globs": ["**/*.md"],
+      "fallthrough": true
+    }
+  ],
   "compatibility_flags": [
     "nodejs_compat",
     "nodejs_compat_populate_process_env"

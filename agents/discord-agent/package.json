@@ -10,7 +10,9 @@
     "deploy": "vite build && wrangler deploy"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^1.2.12",
     "@ai-sdk/openai": "^2.0.73",
+    "@ai-sdk/openai-compatible": "^1.0.8",
     "@openrouter/ai-sdk-provider": "^1.5.4",
     "@types/node": "^25.0.3",
     "agents": "^0.2.32",

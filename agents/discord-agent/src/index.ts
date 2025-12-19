@@ -4,16 +4,14 @@ import {
   SYSTEM_INSTRUCTIONS,
   MESSAGE_BUFFER_CONFIG,
   SUMMARY_PROMPT,
-  MODEL,
-  MODEL_SUMMARY,
 } from "./constants";
 import { PersistedObject } from "./persisted";
 import { renderMemory, type MemoryBlockI } from "./memory";
 import { tools } from "./tools";
 import { generateText, stepCountIs } from "ai";
-import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { getAgentByName } from "agents";
 import { renderDashboard } from "./ui";
+import { createModel } from "./model";
 
 type MemoryState = {
   system: string;
@@ -133,12 +131,10 @@ export class MyAgent extends DiscordAgent {
       .filter((msg) => msg !== undefined);
 
     // Call LLM to summarize the conversation
-    const openrouter = createOpenRouter({
-      apiKey: this.env.OPENROUTER_API_KEY,
-    });
+    const { model } = createModel(this.env);
 
     const { text: summary } = await generateText({
-      model: openrouter(MODEL_SUMMARY),
+      model,
       system: SUMMARY_PROMPT,
       prompt: `Conversation to summarize:\n${JSON.stringify(messagesToSummarize, null, 2)}`,
     });
@@ -283,10 +279,8 @@ export class MyAgent extends DiscordAgent {
     // Get conversation history from database
     const messages = await this.getMessages();
 
-    // Create OpenRouter client
-    const openrouter = createOpenRouter({
-      apiKey: this.env.OPENROUTER_API_KEY,
-    });
+    // Create model from available API keys
+    const { model } = createModel(this.env);
 
     // Merge local tools with MCP tools
     const mcpTools = this.mcp.getAITools();
@@ -294,7 +288,7 @@ export class MyAgent extends DiscordAgent {
 
     // Generate response with automatic tool execution
     const result = await generateText({
-      model: openrouter(MODEL),
+      model,
       system: systemPrompt,
       messages,
       tools: allTools,

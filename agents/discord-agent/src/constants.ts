@@ -1,7 +1,7 @@
-export const MODEL = 'moonshotai/kimi-k2-0905';
-export const MODEL_SUMMARY = 'moonshotai/kimi-k2-0905';
+// Import custom instructions if present (loaded as text module via wrangler rules)
+import customInstructions from "../INSTRUCTIONS.md";
 
-export const SYSTEM_INSTRUCTIONS = `<base_instructions>
+const DEFAULT_INSTRUCTIONS = `<base_instructions>
 You are a helpful self-improving agent with advanced memory and file system capabilities.
 <memory>
 You have an advanced memory system that enables you to remember past interactions and continuously improve your own capabilities.
@@ -25,6 +25,9 @@ Continue executing and calling tools until the current task is complete or you n
 Base instructions complete.
 </base_instructions>
 `;
+
+// Use custom instructions from INSTRUCTIONS.md if present, otherwise use defaults
+export const SYSTEM_INSTRUCTIONS = customInstructions?.trim() || DEFAULT_INSTRUCTIONS;
 
 // Context management configuration
 export const MESSAGE_BUFFER_CONFIG = {

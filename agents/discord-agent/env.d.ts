@@ -6,8 +6,11 @@ declare namespace Cloudflare {
     durableNamespaces: "MyAgent" | "DiscordGateway";
   }
   interface Env {
+    ANTHROPIC_API_KEY: string;
     OPENAI_API_KEY: string;
     OPENROUTER_API_KEY: string;
+    OPENCODE_API_KEY: string;
+    MODEL: string;
     CF_API_TOKEN: string;
     DISCORD_APPLICATION_ID: string;
     DISCORD_CLIENT_ID: string;
@@ -33,8 +36,11 @@ declare namespace NodeJS {
     extends StringifyValues<
       Pick<
         Cloudflare.Env,
+        | "ANTHROPIC_API_KEY"
         | "OPENAI_API_KEY"
         | "OPENROUTER_API_KEY"
+        | "OPENCODE_API_KEY"
+        | "MODEL"
         | "CF_API_TOKEN"
         | "DISCORD_APPLICATION_ID"
         | "DISCORD_CLIENT_ID"

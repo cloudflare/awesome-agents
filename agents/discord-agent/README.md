@@ -38,13 +38,15 @@ A hackable personal AI agent that lives in your Discord DMs. Built with [Cloudfl
 
 | File | Purpose |
 |------|---------|
+| `INSTRUCTIONS.md` | Custom system instructions (optional, overrides defaults) |
 | `src/index.ts` | Main agent class (`MyAgent`), chat loop, message handling, dashboard routing |
 | `src/discord/gateway.ts` | WebSocket connection to Discord, heartbeats, dispatches DM events |
 | `src/discord/agent.ts` | Base class for Discord agents with DM utilities |
 | `src/memory.ts` | Memory block rendering for system prompts |
 | `src/persisted.ts` | Proxy wrapper for auto-persisting state to Durable Object KV |
 | `src/tools.ts` | Memory editing built-in tools |
-| `src/constants.ts` | System prompt, models, default memory blocks |
+| `src/model.ts` | LLM provider selection (Anthropic, OpenAI, OpenRouter, OpenCode) |
+| `src/constants.ts` | Default system prompt, memory blocks |
 | `src/ui.ts` | Web dashboard HTML |
 
 ## Quick Start
@@ -68,7 +70,15 @@ A hackable personal AI agent that lives in your Discord DMs. Built with [Cloudfl
 
 You'll need:
 - **Discord Bot Token** — from step 1
-- **OpenRouter API Key** — from [openrouter.ai](https://openrouter.ai). (You can update the AI SDK provider to any other LLM provider if you prefer)
+- **One LLM provider API key** (set one of the following):
+  - `ANTHROPIC_API_KEY` — from [Anthropic](https://console.anthropic.com/)
+  - `OPENAI_API_KEY` — from [OpenAI](https://platform.openai.com/)
+  - `OPENROUTER_API_KEY` — from [OpenRouter](https://openrouter.ai/)
+  - `OPENCODE_API_KEY` — from [OpenCode Zen](https://opencode.ai/docs/zen)
+
+The agent automatically detects which key you've set and uses the corresponding provider. To use a different provider from the [Vercel AI SDK](https://sdk.vercel.ai/providers/ai-sdk-providers), fork the repo and edit `src/model.ts`.
+
+Optionally set `MODEL` to override the default model for your provider.
 
 ### 3. Configure
 
@@ -76,14 +86,30 @@ Create `.dev.vars` for local development:
 
 ```bash
 DISCORD_BOT_TOKEN=your_discord_bot_token
-OPENROUTER_API_KEY=your_openrouter_key
+
+# Set ONE of these:
+ANTHROPIC_API_KEY=your_anthropic_key
+# OPENAI_API_KEY=your_openai_key
+# OPENROUTER_API_KEY=your_openrouter_key
+# OPENCODE_API_KEY=your_opencode_key
+
+# Optional: override the default model
+# MODEL=claude-sonnet-4-20250514
 ```
 
 For production, set secrets:
 
 ```bash
 npx wrangler secret put DISCORD_BOT_TOKEN
-npx wrangler secret put OPENROUTER_API_KEY
+
+# Set ONE of these:
+npx wrangler secret put ANTHROPIC_API_KEY
+# npx wrangler secret put OPENAI_API_KEY
+# npx wrangler secret put OPENROUTER_API_KEY
+# npx wrangler secret put OPENCODE_API_KEY
+
+# Optional:
+# npx wrangler secret put MODEL
 ```
 
 ### 4. Install & Deploy
@@ -264,41 +290,49 @@ export const DEFAULT_BLOCKS = [
 
 ### Change the Model
 
-Edit `src/constants.ts`:
+Set the `MODEL` environment variable to override the default:
 
-```typescript
-// Default uses OpenRouter with Kimi K2
-export const MODEL = 'moonshotai/kimi-k2-0905';
+```bash
+# In .dev.vars
+MODEL=claude-opus-4-20250514
 
-// Or try others:
-export const MODEL = 'anthropic/claude-sonnet-4';
-export const MODEL = 'openai/gpt-4o';
-export const MODEL = 'google/gemini-2.0-flash-001';
+# Or for production
+npx wrangler secret put MODEL
 ```
+
+Each provider has sensible defaults (see `src/model.ts`), but you can use any model supported by your provider.
 
 ### Use Workers AI Instead
 
-Replace the OpenRouter setup in `src/index.ts`:
+Edit `src/model.ts` to add Workers AI:
 
 ```typescript
-// Instead of:
-import { createOpenRouter } from "@openrouter/ai-sdk-provider";
-const openrouter = createOpenRouter({ apiKey: this.env.OPENROUTER_API_KEY });
-
-// Use:
 import { createWorkersAI } from "workers-ai-provider";
-const ai = createWorkersAI({ binding: this.env.AI });
 
-// Then in generateText:
-const result = await generateText({
-  model: ai("@cf/meta/llama-3.1-70b-instruct"),
-  // ...
-});
+// Add to createModel():
+if (env.AI) {
+  const ai = createWorkersAI({ binding: env.AI });
+  return {
+    model: ai(modelOverride ?? "@cf/meta/llama-3.1-70b-instruct"),
+    provider: "workers-ai",
+  };
+}
 ```
+
+### Customize the System Instructions
+
+Create or edit `INSTRUCTIONS.md` in the project root to override the default system instructions:
+
+```markdown
+You are a helpful assistant specialized in coding tasks.
+Always respond concisely and provide code examples when relevant.
+```
+
+If `INSTRUCTIONS.md` is empty or missing, the default instructions from `src/constants.ts` are used.
 
 ### Customize the Persona
 
-Edit `src/constants.ts` to change `SYSTEM_INSTRUCTIONS` or the default persona in `DEFAULT_BLOCKS`.
+Edit `src/constants.ts` to change the default persona in `DEFAULT_BLOCKS`.
 
 ### Handle More Discord Events
 
