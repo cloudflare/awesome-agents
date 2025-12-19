@@ -25,6 +25,8 @@ A slightly vibe-coded example Discord bot that answers questions about Cloudflar
 
 ## Quick Start
 
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/awesome-agents/tree/main/agents/cloudflare-docs-discord-bot)
+
 ### 1. Install
 
 ```bash

@@ -49,6 +49,8 @@ A hackable personal AI agent that lives in your Discord DMs. Built with [Cloudfl
 
 ## Quick Start
 
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/awesome-agents/tree/main/agents/discord-agent)
+
 ### 1. Create a Discord Bot
 
 1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
