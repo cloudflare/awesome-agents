@@ -13,6 +13,8 @@ This example shows how to run a conversational Slack bot the Agents SDK. Each wo
 - Node.js 18+ and npm.
 - An OpenAI-compatible API key (set `OPENAI_BASE_URL` to `https://api.openai.com/v1` if you use OpenAI directly).
 
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/awesome-agents/tree/main/agents/slack)
+
 ## 1. Install dependencies
 
 ```bash
