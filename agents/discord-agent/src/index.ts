@@ -300,7 +300,6 @@ export class MyAgent extends DiscordAgent {
       tools: allTools,
       stopWhen: stepCountIs(10),
     });
-    console.log(JSON.stringify(result))
 
     // Store tool calls and results from steps
     for (const step of result.steps || []) {

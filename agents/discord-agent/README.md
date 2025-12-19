@@ -55,7 +55,7 @@ A hackable personal AI agent that lives in your Discord DMs. Built with [Cloudfl
 2. Create a new application
 3. Go to **Bot** section:
    - Click "Add Bot"
-   - Copy the **Bot Token**
+   - Go to "Settings" -> "Bot" -> "Reset Token" to get your token. **Make a note of the token**.
    - Enable **Message Content Intent** (required for reading DM content)
 4. Go to **OAuth2 → URL Generator**:
    - Scopes: `bot`
