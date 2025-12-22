@@ -77,13 +77,17 @@ Create `.dev.vars` for local development:
 ```bash
 DISCORD_BOT_TOKEN=your_discord_bot_token
 OPENROUTER_API_KEY=your_openrouter_key
+AI_GATEWAY=you_gateway_name # optional
 ```
+
+If `OPENROUTER_GATEWAY_NAME` is set, the agent routes OpenRouter requests through the Cloudflare AI Gateway. Leave it unset to call your provider directly.
 
 For production, set secrets:
 
 ```bash
 npx wrangler secret put DISCORD_BOT_TOKEN
 npx wrangler secret put OPENROUTER_API_KEY
+npx wrangler secret put OPENROUTER_GATEWAY_NAME # optional
 ```
 
 ### 4. Install & Deploy

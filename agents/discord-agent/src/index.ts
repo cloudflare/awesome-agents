@@ -41,6 +41,21 @@ export class MyAgent extends DiscordAgent {
     );
   }
 
+  private async createOpenRouterClient() {
+    const gatewayName = this.env.AI_GATEWAY?.trim();
+    const openrouterOptions: { apiKey: string; baseUrl?: string } = {
+      apiKey: this.env.OPENROUTER_API_KEY,
+    };
+
+    if (gatewayName) {
+      openrouterOptions.baseUrl = await this.env.AI
+        .gateway(gatewayName)
+        .getUrl("openrouter");
+    }
+
+    return createOpenRouter(openrouterOptions);
+  }
+
   private addMessage(message: {
     id: string;
     role: "user" | "assistant" | "tool";
@@ -133,9 +148,7 @@ export class MyAgent extends DiscordAgent {
       .filter((msg) => msg !== undefined);
 
     // Call LLM to summarize the conversation
-    const openrouter = createOpenRouter({
-      apiKey: this.env.OPENROUTER_API_KEY,
-    });
+    const openrouter = await this.createOpenRouterClient();
 
     const { text: summary } = await generateText({
       model: openrouter(MODEL_SUMMARY),
@@ -284,9 +297,7 @@ export class MyAgent extends DiscordAgent {
     const messages = await this.getMessages();
 
     // Create OpenRouter client
-    const openrouter = createOpenRouter({
-      apiKey: this.env.OPENROUTER_API_KEY,
-    });
+    const openrouter = await this.createOpenRouterClient();
 
     // Merge local tools with MCP tools
     const mcpTools = this.mcp.getAITools();

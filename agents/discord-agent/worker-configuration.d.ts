@@ -6,15 +6,9 @@ declare namespace Cloudflare {
     durableNamespaces: "MyAgent" | "DiscordGateway";
   }
   interface Env {
-    OPENAI_API_KEY: string;
     OPENROUTER_API_KEY: string;
-    CF_API_TOKEN: string;
-    DISCORD_APPLICATION_ID: string;
-    DISCORD_CLIENT_ID: string;
-    DISCORD_CLIENT_SECRET: string;
-    DISCORD_PUBLIC_KEY: string;
     DISCORD_BOT_TOKEN: string;
-    TAVILY_API_KEY: string;
+    AI_GATEWAY: string;
     AGENT: DurableObjectNamespace<import("./src/index").MyAgent>;
     DISCORD_GATEWAY: DurableObjectNamespace<
       import("./src/index").DiscordGateway
@@ -33,15 +27,9 @@ declare namespace NodeJS {
     extends StringifyValues<
       Pick<
         Cloudflare.Env,
-        | "OPENAI_API_KEY"
         | "OPENROUTER_API_KEY"
-        | "CF_API_TOKEN"
-        | "DISCORD_APPLICATION_ID"
-        | "DISCORD_CLIENT_ID"
-        | "DISCORD_CLIENT_SECRET"
-        | "DISCORD_PUBLIC_KEY"
         | "DISCORD_BOT_TOKEN"
-        | "TAVILY_API_KEY"
+        | "AI_GATEWAY"
       >
     > {}
 }
