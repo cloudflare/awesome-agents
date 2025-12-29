@@ -1,0 +1,32 @@
+# Cloudflare Workers Configuration
+# This configures the Worker and Durable Objects for the WhatsApp AI agent
+
+name = "whatsapp-cloudflare-agent"
+main = "src/worker.ts"
+compatibility_date = "2024-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Durable Object bindings
+[[durable_objects.bindings]]
+name = "CONVERSATIONS"
+class_name = "ConversationDurableObject"
+script_name = "whatsapp-cloudflare-agent"
+
+# Durable Object migrations
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ConversationDurableObject"]
+
+# Secrets should be set via: wrangler secret put <KEY>
+# Required secrets:
+# - OPENAI_API_KEY
+# - SENDER_PHONE (WhatsApp Business Phone Number ID)
+# - FACEBOOK_AUTH_TOKEN (WhatsApp API token)
+# - WEBHOOK_VERIFY_TOKEN (Random string for webhook verification)
+
+
+# Observability settings
+[observability]
+enabled = true
+head_sampling_rate = 1.0  # Sample 100% of requests for traces (adjust as needed: 0.0 to 1.0)
+
