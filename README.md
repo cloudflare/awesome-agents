@@ -19,6 +19,10 @@ The Cloudflare Agents SDK enables developers to build powerful, distributed AI a
 - **[Personal Discord Agent](./agents/discord-agent)** - A hackable AI agent with persistent memory that lives in your Discord DMs.
 - **[Cloudflare Discord Agent](./agents/cloudflare-docs-discord-bot)** - A Discord agent that answers questions about Cloudflare using RAG with [Cloudflare Docs MCP](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-vectorize).
 
+### Marketplaces & Distribution
+
+- **[RemoteOpenClaw](https://remoteopenclaw.com)** - Open marketplace for discovering, sharing, and selling AI agent skills and personas built on OpenClaw.
+
 ## Getting Started
 
 To explore or run any of these projects:
