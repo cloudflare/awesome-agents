@@ -70,3 +70,4 @@ Projects should:
 
 This repository is licensed under the MIT License - see individual project directories for specific project licenses.
 
+- [CausalLayer MCP](https://github.com/smq9sn5jck-coder/causallayer-mcp) - Deterministic AI liability attribution via MCP. Anchors AI agent decisions to immutable certificate chains for EU AI Act compliance. Deployed on Cloudflare Workers.
