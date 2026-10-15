@@ -19,6 +19,10 @@ The Cloudflare Agents SDK enables developers to build powerful, distributed AI a
 - **[Personal Discord Agent](./agents/discord-agent)** - A hackable AI agent with persistent memory that lives in your Discord DMs.
 - **[Cloudflare Discord Agent](./agents/cloudflare-docs-discord-bot)** - A Discord agent that answers questions about Cloudflare using RAG with [Cloudflare Docs MCP](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-vectorize).
 
+### MCP Clients & Network Discovery
+
+- **[Agentel Network MCP Chat Agent](./agents/agentel-network)** - A Cloudflare Agents chat starter for read-only discovery of public Missions, Skills, Agents and evidence through Agentel MCP, using operator-provided credentials and model keys.
+
 ## Getting Started
 
 To explore or run any of these projects:
